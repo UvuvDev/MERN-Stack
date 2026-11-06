@@ -253,7 +253,7 @@ function truncate(value, max) {
   return text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
 }
 
-async function downloadCsv(url, cacheFile, { refresh, fetchImpl }) {
+export async function downloadCsv(url, cacheFile, { refresh, fetchImpl }) {
   if (!refresh && existsSync(cacheFile)) {
     return parseCsv(await fs.readFile(cacheFile, 'utf8'));
   }

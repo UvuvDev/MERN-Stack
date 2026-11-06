@@ -60,6 +60,12 @@ export default function About() {
               office. When service periods, chambers, or Congresses differ, the models are told to
               match bills by number and Congress and not to invent shared votes.
             </p>
+            <p>
+              Priority measures are handled separately from the recent-vote sample: the Epstein
+              Files Transparency Act and the Epstein documents amendment to S.2296 are loaded with
+              their exact roll-call questions and results. A vote to table is shown as procedural,
+              and no position is inferred for a candidate who has no recorded roll-call vote.
+            </p>
             <div className="sent-grid">
               <div className="sent-card sent-card--yes">
                 <h3>Always sent</h3>

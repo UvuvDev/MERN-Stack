@@ -196,6 +196,7 @@ All models live in `server/src/models/`. `models/index.js` must re-export every 
   sponsor: String,
   sourceUrl: String,
   isSample: Boolean,
+  priorityKey: String,       // optional; set on priority bills
 }
 
 // Vote
@@ -205,6 +206,8 @@ All models live in `server/src/models/`. `models/index.js` must re-export every 
   position: String,                  // 'yes' | 'no' | 'abstain' | 'absent'
   castAt: Date,
   note: String,
+  question: String,          // roll-call question, e.g. "On the Motion to Table"
+  result: String,            // roll-call result, e.g. "Motion to Table Agreed to 51–49"
 }
 // unique compound index { candidate: 1, bill: 1 }
 
@@ -233,6 +236,7 @@ All models live in `server/src/models/`. `models/index.js` must re-export every 
   office: ObjectId -> Office,
   race: ObjectId -> Race,           // optional; set when created from a race
   votesSnapshot: { candidateA: Number, candidateB: Number },
+  priorityMeasures: [...]            // authoritative priority positions (see §6.3)
   models: [{
     key: String,                     // 'minimax' | 'deepseek' | 'grok'
     modelId: String,
@@ -252,6 +256,12 @@ Indexes: `User.email` unique; `Office.slug` unique; `Candidate.slug` unique, `Ca
 - Everything seeded is fictional and `isSample: true`. Candidate names must not match real current officeholders. Add a banner in the UI that sample data is fictional.
 - Verified demo account: `demo@recordoverrhetoric.app` / `CompareVotes!2026` (only when `SEED_DEMO_USER !== 'false'`).
 - `npm run seed` is idempotent (upsert by slug/number) and supports `--reset`.
+
+### Priority measures (`server/src/import/priority-measures.js`)
+
+- `npm run import:priority` loads H.R. 4405 (House roll 289, 427–1; Senate passed by UC) and the Epstein documents amendment to S.2296 (Senate roll 512, motion to table 51–49).
+- The S.2296 amendment is stored as a synthetic priority bill so the one-vote-per-bill index remains intact.
+- Every comparison includes authoritative `priorityMeasures` for the two candidates, regardless of the 60-vote prompt sample. Procedural questions/results are stored and labeled; no position is inferred from UC/voice votes.
 
 ### Real data import (`server/src/import/`)
 - `npm run import:real -- --state=FL --limit=120 [--enrich] [--reset] [--purge-sample] [--dry-run]`
@@ -436,7 +446,7 @@ Requirements:
 ## 12. Definition of done
 
 1. `npm install` at root succeeds.
-2. `npm test` passes with every endpoint covered (currently 64 tests).
+2. `npm test` passes with every endpoint covered (currently 67 tests).
 3. `npm run build` produces `client/dist` and `npm start` serves the SPA + API from one origin.
 4. Seeded app works end-to-end locally with `AI_FAKE=true` (no API key) and with a real OpenRouter key.
 5. No secrets committed; `.env.example` complete.

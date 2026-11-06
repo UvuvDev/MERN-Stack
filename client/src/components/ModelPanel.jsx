@@ -56,6 +56,7 @@ function Analysis({ analysis, fallbackA, fallbackB, idPrefix = 'analysis' }) {
   const concernsA = stringList(candidateA.concerns);
   const strengthsB = stringList(candidateB.strengths);
   const concernsB = stringList(candidateB.concerns);
+  const priorityMeasures = asArray(analysis && analysis.priorityMeasures).filter(Boolean);
   const sharedVotes = asArray(analysis && analysis.sharedVotes).filter(Boolean);
   const notableVotes = asArray(analysis && analysis.notableVotes).filter(Boolean);
   const confidence = text(analysis && analysis.confidence).toLowerCase();
@@ -70,6 +71,29 @@ function Analysis({ analysis, fallbackA, fallbackB, idPrefix = 'analysis' }) {
         <h3 id={`${idPrefix}-summary-heading`}>Summary</h3>
         {summary ? <p className="analysis-summary">{summary}</p> : <p className="analysis-empty">No summary was returned.</p>}
       </section>
+
+      {priorityMeasures.length ? (
+        <section className="analysis-section" aria-labelledby={`${idPrefix}-priority-heading`}>
+          <h3 id={`${idPrefix}-priority-heading`}>Priority measures</h3>
+          <ul className="note-list">
+            {priorityMeasures.map((measure, index) => {
+              if (typeof measure === 'string') {
+                return <li key={`priority-${index}`}>{measure}</li>;
+              }
+              return (
+                <li key={`priority-${index}`}>
+                  {measure.measure ? <strong>{text(measure.measure)}</strong> : null}
+                  {measure.candidateA ? (
+                    <span>{measure.measure ? ' — ' : ''}{labelA}: {text(measure.candidateA)}</span>
+                  ) : null}
+                  {measure.candidateB ? <span> · {labelB}: {text(measure.candidateB)}</span> : null}
+                  {measure.context ? <span> {text(measure.context)}</span> : null}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
 
       <section className="analysis-section" aria-labelledby={`${idPrefix}-dimensions-heading`}>
         <h3 id={`${idPrefix}-dimensions-heading`}>Topic by topic</h3>

@@ -136,6 +136,11 @@ const openapiDocument = {
           sponsor: { type: 'string', nullable: true, example: 'Rep. Sample' },
           sourceUrl: { type: 'string', nullable: true, example: 'https://example.gov/hr1234' },
           isSample: { type: 'boolean', example: true },
+          priorityKey: {
+            type: 'string',
+            nullable: true,
+            example: 'epstein-hr4405',
+          },
         },
       },
       Vote: {
@@ -150,6 +155,16 @@ const openapiDocument = {
           },
           castAt: { type: 'string', format: 'date-time', nullable: true },
           note: { type: 'string', nullable: true, example: '' },
+          question: {
+            type: 'string',
+            nullable: true,
+            example: 'On the Motion to Table',
+          },
+          result: {
+            type: 'string',
+            nullable: true,
+            example: 'Motion to Table Agreed to 51–49',
+          },
           bill: { $ref: '#/components/schemas/Bill' },
         },
       },
@@ -267,6 +282,18 @@ const openapiDocument = {
               },
             },
           },
+          priorityMeasures: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                measure: { type: 'string', example: 'Epstein Files Transparency Act' },
+                candidateA: { type: 'string', example: 'No recorded roll-call vote.' },
+                candidateB: { type: 'string', example: 'Voted yes.' },
+                context: { type: 'string' },
+              },
+            },
+          },
           confidence: {
             type: 'string',
             enum: ['low', 'medium', 'high'],
@@ -276,6 +303,26 @@ const openapiDocument = {
             type: 'string',
             example: 'AI interpretation of voting records only; not an endorsement.',
           },
+        },
+      },
+      PriorityPosition: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', nullable: true },
+          name: { type: 'string', example: 'Dan Sullivan' },
+          position: {
+            type: 'string',
+            enum: ['yes', 'no', 'abstain', 'absent'],
+            nullable: true,
+            example: 'yes',
+          },
+          note: { type: 'string' },
+          question: { type: 'string', example: 'On the Motion to Table' },
+          result: { type: 'string', example: 'Motion to Table Agreed to 51–49' },
+          date: { type: 'string', format: 'date-time', nullable: true },
+          billNumber: { type: 'string' },
+          title: { type: 'string' },
+          sourceUrl: { type: 'string', nullable: true },
         },
       },
       ModelResult: {
@@ -327,6 +374,22 @@ const openapiDocument = {
             },
           },
           office: { $ref: '#/components/schemas/Office' },
+          priorityMeasures: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                key: { type: 'string', example: 'epstein-hr4405' },
+                label: { type: 'string', example: 'Epstein Files Transparency Act' },
+                title: { type: 'string' },
+                billNumber: { type: 'string', example: 'H.R. 4405' },
+                context: { type: 'string' },
+                sourceUrl: { type: 'string', nullable: true },
+                candidateA: { $ref: '#/components/schemas/PriorityPosition' },
+                candidateB: { $ref: '#/components/schemas/PriorityPosition' },
+              },
+            },
+          },
           race: {
             type: 'object',
             nullable: true,

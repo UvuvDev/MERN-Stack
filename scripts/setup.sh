@@ -43,7 +43,7 @@ Options:
   --no-docker        Do not start/manage MongoDB with Docker
   --skip-seed        Skip seeding sample data
   --reset            Wipe the database before seeding
-  --real             Import real congressional records and register known races
+  --real             Import real records, register known races, and load priority measures
   --real-only        Import real records and remove the fictional sample data
   --enrich           Add official bill metadata from Congress.gov (needs key)
   --state=FL         State(s) for --real (default: FL)
@@ -248,6 +248,11 @@ if [ "$DO_REAL" = 1 ]; then
     IMPORT_ARGS+=(--enrich)
   fi
   npm run import:real -- "${IMPORT_ARGS[@]}"
+
+  say "==> Registering known races"
+  npm run import:races || true
+  say "==> Loading priority measures"
+  npm run import:priority || true
 
 fi
 

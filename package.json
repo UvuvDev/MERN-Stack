@@ -17,7 +17,8 @@
     "lint": "npm run lint -w server && npm run lint -w client",
     "import:real": "npm run import:real -w server --",
     "setup": "bash scripts/setup.sh",
-    "import:races": "npm run import:races -w server"
+    "import:races": "npm run import:races -w server",
+    "import:priority": "npm run import:priority -w server"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"

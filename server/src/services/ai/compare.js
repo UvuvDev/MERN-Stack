@@ -5,6 +5,7 @@ import {
   enrichAnalysisWithBillTitles,
 } from '../../utils/billRefs.js';
 import { buildComparisonPrompt } from './prompt.js';
+import { priorityMeasuresForDeterministicAnalysis } from '../priorityMeasures.js';
 import { callOpenRouter } from './openrouter.js';
 
 export const MODEL_DEFINITIONS = [
@@ -218,6 +219,7 @@ export function buildDeterministicAnalysis({
   candidateB,
   recordsA,
   recordsB,
+  priorityMeasures = [],
 }) {
   const nameA = nameOf(candidateA, 'Candidate A');
   const nameB = nameOf(candidateB, 'Candidate B');
@@ -302,6 +304,7 @@ export function buildDeterministicAnalysis({
               why: `${nameB} voted ${record.position} on ${record.bill?.title || record.bill?.number}.`,
             })),
           ].filter((item) => item.bill),
+    priorityMeasures: priorityMeasuresForDeterministicAnalysis(priorityMeasures),
     confidence: confidenceFor(recordsA, recordsB),
     disclaimer:
       'Demo mode is on: this analysis is generated deterministically from the supplied vote data, not by a live language model. It covers voting records only and is not an endorsement.',
@@ -377,8 +380,15 @@ export async function compareVotingRecords({
   candidateB,
   recordsA,
   recordsB,
+  priorityMeasures = [],
 }) {
-  const promptInput = { candidateA, candidateB, recordsA, recordsB };
+  const promptInput = {
+    candidateA,
+    candidateB,
+    recordsA,
+    recordsB,
+    priorityMeasures,
+  };
 
   const rawModels = shouldUseFake()
     ? fakeModels(promptInput)
@@ -396,6 +406,7 @@ export async function compareVotingRecords({
   return {
     models,
     billReferences: collectCitedBills(models, billMap),
+    priorityMeasures,
     generatedAt: new Date().toISOString(),
   };
 }

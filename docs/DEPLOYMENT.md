@@ -463,6 +463,8 @@ Notes:
   mount a volume there if you want the cache to persist across runs.
 - Use `--dry-run` to preview counts, `--all-states` for the whole Congress, and
   `--reset` to remove previously imported real records.
+- Register races and priority measures after the imports:
+  `npm run import:races -w server` and `npm run import:priority -w server`.
 - For a Cloud Run Job, override the container command with
   `node src/import/import-real.js --state=FL --limit=120 --enrich` and give the
   job the same `MONGODB_URI` and `CONGRESS_API_KEY` secrets as the service.

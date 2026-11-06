@@ -1,3 +1,5 @@
+import { priorityPromptPayload } from '../priorityMeasures.js';
+
 const SCHEMA = `{
   "summary": "2-4 sentence neutral summary of how the two records differ.",
   "dimensions": [
@@ -22,6 +24,14 @@ const SCHEMA = `{
   "notableVotes": [
     { "bill": "H.R. 1234 — Small Business Tax Simplification Act", "why": "Why this vote is notable." }
   ],
+  "priorityMeasures": [
+    {
+      "measure": "Epstein Files Transparency Act",
+      "candidateA": "Voted yes (House roll 289).",
+      "candidateB": "No recorded roll-call vote.",
+      "context": "Why the vote or absence matters."
+    }
+  ],
   "confidence": "low | medium | high",
   "disclaimer": "AI interpretation of voting records only; not an endorsement."
 }`;
@@ -37,7 +47,8 @@ Rules you must follow:
 6. Be neutral and precise. Avoid persuasive language, endorsements, and predictions about future behavior.
 7. Output STRICT JSON only. No markdown, no code fences, no commentary before or after the JSON.
 8. The records may come from different Congresses, chambers, or time periods. Treat a bill as shared only when both the number AND the Congress match. Do not assume the same number in the 118th and 119th Congresses is the same bill. If the candidates did not serve together, sharedVotes may be empty; say so instead of inventing overlap.
-9. Keep the output compact: a 3-sentence summary, at most 6 dimensions (only where the records actually differ), at most 2 strengths and 2 concerns per candidate, at most 8 shared votes, and at most 5 notable votes.
+9. Every item in "priorityMeasures" is mandatory. For each, state each candidate's recorded position (or explicitly say there is no recorded roll-call vote) and explain the vote question/result. This includes the Epstein Files Transparency Act and the Epstein documents amendment to S.2296. A Yea on a motion to table is procedural and is not a vote for final passage; label it accurately. Never infer a position from a voice vote or unanimous consent.
+10. Keep the output compact: a 3-sentence summary, at most 6 dimensions (only where the records actually differ), at most 2 strengths and 2 concerns per candidate, at most 8 shared votes, and at most 5 notable votes.
 
 Output schema (all keys required):
 ${SCHEMA}
@@ -76,6 +87,9 @@ function shapeRecords(records) {
       return {
         bill,
         position: record.position ?? null,
+        question: record.question ?? null,
+        result: record.result ?? null,
+        note: record.note ?? null,
         date: isoDate(record.castAt ?? record.date),
       };
     })
@@ -87,6 +101,7 @@ export function buildComparisonPrompt({
   candidateB,
   recordsA,
   recordsB,
+  priorityMeasures = [],
 }) {
   const payload = {
     task: 'Compare candidate A and candidate B using only their roll-call voting records.',
@@ -111,6 +126,7 @@ export function buildComparisonPrompt({
       candidateA: shapeRecords(recordsA),
       candidateB: shapeRecords(recordsB),
     },
+    priorityMeasures: priorityPromptPayload(priorityMeasures),
   };
 
   return {

@@ -1,5 +1,6 @@
 import { HttpError } from '../utils/httpError.js';
 import { getModel } from '../utils/models.js';
+import { buildPriorityMeasureResults } from './priorityMeasures.js';
 
 const OBJECT_ID_PATTERN = /^[0-9a-fA-F]{24}$/;
 const MAX_RECORDS_PER_CANDIDATE = 60;
@@ -68,6 +69,7 @@ function shapeBill(bill) {
     introducedAt: raw.introducedAt ?? null,
     sponsor: raw.sponsor ?? null,
     sourceUrl: raw.sourceUrl ?? null,
+    priorityKey: raw.priorityKey ?? null,
   };
 }
 
@@ -80,6 +82,8 @@ function shapeVote(vote) {
     position: raw.position ?? null,
     castAt: raw.castAt ?? null,
     note: raw.note ?? null,
+    question: raw.question ?? null,
+    result: raw.result ?? null,
     bill,
   };
 }
@@ -140,12 +144,22 @@ export async function getComparisonData(candidateAId, candidateBId, { allowDiffe
     }
   }
 
+  const summaryA = shapeCandidateSummary(candidateA);
+  const summaryB = shapeCandidateSummary(candidateB);
+  const priorityMeasures = buildPriorityMeasureResults({
+    candidateA: summaryA,
+    candidateB: summaryB,
+    recordsA,
+    recordsB,
+  });
+
   return {
-    candidateA: shapeCandidateSummary(candidateA),
-    candidateB: shapeCandidateSummary(candidateB),
+    candidateA: summaryA,
+    candidateB: summaryB,
     // Votes are newest-first; cap the prompt size while treating both sides equally.
     recordsA: recordsA.slice(0, MAX_RECORDS_PER_CANDIDATE),
     recordsB: recordsB.slice(0, MAX_RECORDS_PER_CANDIDATE),
+    priorityMeasures,
   };
 }
 

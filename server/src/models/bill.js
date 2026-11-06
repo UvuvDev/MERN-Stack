@@ -42,6 +42,12 @@ const billSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  priorityKey: {
+    type: String,
+    trim: true,
+    index: true,
+    sparse: true,
+  },
 });
 
 billSchema.index({ congress: 1, chamber: 1, number: 1 }, { unique: true });

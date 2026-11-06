@@ -26,6 +26,14 @@ const voteSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  question: {
+    type: String,
+    trim: true,
+  },
+  result: {
+    type: String,
+    trim: true,
+  },
 });
 
 voteSchema.index({ candidate: 1, bill: 1 }, { unique: true });

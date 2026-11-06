@@ -140,7 +140,15 @@ export async function createBill(overrides = {}) {
 }
 
 export async function createVote(overrides = {}) {
-  const { candidate, bill, position = 'yes', castAt, note } = overrides;
+  const {
+    candidate,
+    bill,
+    position = 'yes',
+    castAt,
+    note,
+    question,
+    result,
+  } = overrides;
   if (!candidate) throw new Error('createVote requires a candidate');
   if (!bill) throw new Error('createVote requires a bill');
 
@@ -151,6 +159,8 @@ export async function createVote(overrides = {}) {
     position,
     castAt: castAt || new Date('2025-02-01T12:00:00.000Z'),
     note: note || '',
+    question,
+    result,
   });
 }
 

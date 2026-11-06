@@ -12,7 +12,8 @@
     "seed": "node src/seed/seed.js",
     "lint": "node --check src/index.js",
     "import:real": "node src/import/import-real.js",
-    "import:races": "node src/import/import-races.js"
+    "import:races": "node src/import/import-races.js",
+    "import:priority": "node src/import/import-priority.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

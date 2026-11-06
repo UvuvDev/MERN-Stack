@@ -39,6 +39,19 @@ function normalizeNotableVotes(value) {
     .filter((item) => item.bill);
 }
 
+function normalizePriorityMeasures(value) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter(isPlainObject)
+    .map((item) => ({
+      measure: asString(item.measure),
+      candidateA: asString(item.candidateA),
+      candidateB: asString(item.candidateB),
+      context: asString(item.context),
+    }))
+    .filter((item) => item.measure);
+}
+
 function normalizeSide(value, fallbackLabel) {
   return {
     label: asString(value.label) || fallbackLabel,
@@ -74,6 +87,7 @@ function normalizeAnalysis(raw) {
     candidateB: normalizeSide(raw.candidateB, 'Candidate B'),
     sharedVotes: asStringArray(raw.sharedVotes),
     notableVotes: normalizeNotableVotes(raw.notableVotes),
+    priorityMeasures: normalizePriorityMeasures(raw.priorityMeasures),
     confidence,
     disclaimer:
       asString(raw.disclaimer) ||

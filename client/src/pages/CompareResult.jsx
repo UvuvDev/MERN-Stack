@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { candidatesApi, comparisonsApi } from '../lib/api';
 import { errorMessage } from '../lib/errors';
-import { formatDate, formatDateTime, officeLabel, resourceId } from '../lib/format';
+import { formatDate, formatDateTime, officeLabel, positionLabel, resourceId } from '../lib/format';
 import { useDocumentTitle } from '../lib/hooks';
 import Alert from '../components/Alert';
 import Button from '../components/Button';
@@ -28,6 +28,77 @@ async function resolveCandidate(value, fallbackName) {
     // Fall through to the snapshot data the comparison already has.
   }
   return value && typeof value === 'object' ? value : { name: fallbackName };
+}
+
+function priorityPositionText(position) {
+  if (!position || !position.position) return 'No recorded roll-call vote';
+  const label = positionLabel(position.position);
+  const detail = position.result || position.note;
+  return detail ? `${label} — ${detail}` : label;
+}
+
+function PriorityMeasures({ measures }) {
+  return (
+    <section className="priority-measures" aria-labelledby="priority-measures-heading">
+      <h2 id="priority-measures-heading">Priority measures</h2>
+      <p className="priority-measures__intro">
+        High-salience measures the panel is required to address. The positions below are taken
+        directly from the recorded roll calls, not from the AI text.
+      </p>
+      <ul className="priority-measure-list">
+        {measures.map((measure) => (
+          <li className="priority-measure" key={measure.key || measure.label}>
+            <div className="priority-measure__head">
+              <div>
+                {measure.billNumber ? (
+                  <p className="priority-measure__number">{measure.billNumber}</p>
+                ) : null}
+                <h3>{measure.label || measure.title || 'Priority measure'}</h3>
+              </div>
+              {measure.sourceUrl ? (
+                <a
+                  className="text-link priority-measure__source"
+                  href={measure.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View roll call
+                </a>
+              ) : null}
+            </div>
+            {measure.context ? (
+              <p className="priority-measure__context">{measure.context}</p>
+            ) : null}
+            <div className="priority-positions">
+              {['candidateA', 'candidateB'].map((side) => {
+                const candidate = measure[side] || {};
+                const position = candidate.position;
+                return (
+                  <article className="priority-position" key={side}>
+                    <h4>{candidate.name || (side === 'candidateA' ? 'Candidate A' : 'Candidate B')}</h4>
+                    <p>
+                      {position ? (
+                        <span className={`badge badge--${position}`}>
+                          {positionLabel(position)}
+                        </span>
+                      ) : (
+                        <span className="badge badge--unknown">No roll-call vote</span>
+                      )}
+                      <span className="priority-position__detail">
+                        {position
+                          ? candidate.result || candidate.note || ''
+                          : candidate.note || 'No recorded position in the imported record.'}
+                      </span>
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 function BillReferences({ bills }) {
@@ -222,6 +293,9 @@ export default function CompareResult() {
   const billReferences = Array.isArray(comparison.billReferences)
     ? comparison.billReferences.filter((bill) => bill && (bill.number || bill.title))
     : [];
+  const priorityMeasures = Array.isArray(comparison.priorityMeasures)
+    ? comparison.priorityMeasures.filter((measure) => measure && (measure.label || measure.title))
+    : [];
   const okCount = models.filter((model) => model && model.ok && model.analysis).length;
   const created = comparison.createdAt || comparison.generatedAt;
   const showSampleBanner =
@@ -267,6 +341,8 @@ export default function CompareResult() {
         </div>
         <CandidateCard candidate={candidateB} fallbackName="Candidate B" votes={votesB} />
       </div>
+
+      {priorityMeasures.length ? <PriorityMeasures measures={priorityMeasures} /> : null}
 
       <div className="panel-status-bar" role="status" aria-live="polite">
         <span>

@@ -89,6 +89,9 @@ function serializeComparison(doc, { compact = false } = {}) {
     office,
     votesSnapshot: source.votesSnapshot ?? { candidateA: 0, candidateB: 0 },
     models: (source.models ?? []).map(compact ? compactModel : fullModel),
+    priorityMeasures: Array.isArray(source.priorityMeasures)
+      ? source.priorityMeasures
+      : [],
     race: source.race && typeof source.race === 'object'
       ? {
           id: source.race._id ?? source.race.id,
@@ -137,6 +140,7 @@ export const createComparison = asyncHandler(async (req, res) => {
     candidateB: data.candidateB,
     recordsA: data.recordsA,
     recordsB: data.recordsB,
+    priorityMeasures: data.priorityMeasures,
   });
 
   const office = race
@@ -162,6 +166,7 @@ export const createComparison = asyncHandler(async (req, res) => {
     },
     models: result.models,
     billReferences: result.billReferences ?? [],
+    priorityMeasures: result.priorityMeasures ?? [],
   });
 
   const comparison = serializeComparison(created);

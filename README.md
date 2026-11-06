@@ -35,6 +35,7 @@ Record Over Rhetoric is a MERN-stack web application that lets you pick two cand
 - Import real U.S. House and Senate records (Voteview positions + optional Congress.gov bill metadata).
 - Pair two candidates for the same office and generate a three-model analysis.
 - Each model returns a neutral summary, topic-by-topic comparison, strengths/concerns, shared votes, notable votes, and a confidence level — every claim tied to a bill number, with the bill's title always shown. Each briefing also includes a "Bills cited" reference list with titles, neutral summaries, and source links.
+- Priority measures: the Epstein Files Transparency Act and the Epstein amendment to S.2296 are loaded explicitly, included in every prompt, and shown with their procedural context (including votes to table and no-vote states).
 - Comparison history saved per user.
 - Account creation with **e-mail verification** and **forgotten-password recovery**.
 - Cookie-based sessions for the web app and bearer tokens for the future mobile app.
@@ -165,6 +166,19 @@ The Ohio race is Husted (119th) vs. Brown (118th); Georgia is Ossoff (Senate) vs
 
 Add or correct races in `server/src/import/races-2026.json`, then run `npm run import:races`.
 
+### Priority measures
+
+Two high-salience measures are always loaded and explicitly covered in the prompt:
+
+```bash
+npm run import:priority
+```
+
+- **H.R. 4405 — Epstein Files Transparency Act**: House roll 289, 427–1; Senate passed by unanimous consent, so there is no Senate roll-call position.
+- **Epstein documents amendment to S.2296**: Senate roll 512, motion to table, 51–49. Sullivan voted Yea (to table), Husted Yea, Ossoff Nay.
+
+The priority section is sourced from the full candidate record, not the 60-vote prompt sample. Procedural votes are labeled as such; the app never infers a position from a voice vote or unanimous consent. Edit the registry in `server/src/import/priority-measures.js` to add more measures.
+
 ## Real congressional data
 
 The app ships with fictional sample data, but you can load real roll-call records:
@@ -199,7 +213,8 @@ Voteview does not require an account and is the practical source for per-member 
 | `npm test` | Vitest + Supertest integration suite against an in-memory MongoDB |
 | `npm run seed` | Seed sample data (add `-- --reset` to wipe first) |
 | `npm run import:real` | Import real House/Senate voting records (`--state=FL`, `--enrich`, `--dry-run`) |
-| `npm run import:races` | Register known races from `server/src/import/races.js` |
+| `npm run import:races` | Register known races from `server/src/import/races-2026.json` |
+| `npm run import:priority` | Load the Epstein priority measures and their recorded roll-call votes |
 | `npm run lint` | Syntax checks for server and client config |
 
 ## API and Swagger
@@ -222,7 +237,7 @@ Authentication supports both:
 npm test
 ```
 
-The suite spins up an in-memory MongoDB via `mongodb-memory-server`, runs every API endpoint through Supertest, and uses deterministic AI fixtures (`AI_FAKE=1`). It covers registration/verification, login for verified and unverified users, password reset, candidate browsing, comparison creation, ownership checks, rate limits, OpenAPI/Swagger, 404 handling, and the real-data/race helpers (64 tests).
+The suite spins up an in-memory MongoDB via `mongodb-memory-server`, runs every API endpoint through Supertest, and uses deterministic AI fixtures (`AI_FAKE=1`). It covers registration/verification, login for verified and unverified users, password reset, candidate browsing, comparison creation, ownership checks, rate limits, OpenAPI/Swagger, 404 handling, and the real-data/race/priority helpers (67 tests).
 
 ## Production deployment (GCP)
 

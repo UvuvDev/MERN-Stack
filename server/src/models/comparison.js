@@ -38,6 +38,40 @@ const billReferenceSchema = new mongoose.Schema(
   { _id: false }
 );
 
+const priorityPositionSchema = new mongoose.Schema(
+  {
+    id: { type: String, default: null },
+    name: { type: String, default: null },
+    position: {
+      type: String,
+      enum: ['yes', 'no', 'abstain', 'absent'],
+      default: null,
+    },
+    note: { type: String, default: '' },
+    question: { type: String, default: '' },
+    result: { type: String, default: '' },
+    date: { type: Date, default: null },
+    billNumber: { type: String, default: null },
+    title: { type: String, default: null },
+    sourceUrl: { type: String, default: null },
+  },
+  { _id: false }
+);
+
+const priorityMeasureSchema = new mongoose.Schema(
+  {
+    key: { type: String },
+    label: { type: String },
+    title: { type: String },
+    billNumber: { type: String },
+    context: { type: String },
+    sourceUrl: { type: String },
+    candidateA: { type: priorityPositionSchema, default: null },
+    candidateB: { type: priorityPositionSchema, default: null },
+  },
+  { _id: false }
+);
+
 const comparisonSchema = new mongoose.Schema(
   {
     user: {
@@ -72,6 +106,10 @@ const comparisonSchema = new mongoose.Schema(
     },
     billReferences: {
       type: [billReferenceSchema],
+      default: [],
+    },
+    priorityMeasures: {
+      type: [priorityMeasureSchema],
       default: [],
     },
   },
