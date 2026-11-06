@@ -215,6 +215,7 @@ Voteview does not require an account and is the practical source for per-member 
 | `npm run import:real` | Import real House/Senate voting records (`--state=FL`, `--enrich`, `--dry-run`) |
 | `npm run import:races` | Register known races from `server/src/import/races-2026.json` |
 | `npm run import:priority` | Load the Epstein priority measures and their recorded roll-call votes |
+| `npm run email:test` | Send a test e-mail using the configured SMTP settings (`--to=...`) |
 | `npm run lint` | Syntax checks for server and client config |
 
 ## API and Swagger
@@ -301,6 +302,7 @@ Additional hardening: bcrypt (12 rounds), JWT in httpOnly/SameSite cookies (bear
 
 - [`docs/PROJECT_SPEC.md`](docs/PROJECT_SPEC.md) — build contract, data model, API.
 - [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) — GCP + Atlas deployment.
+- [`docs/EMAIL_SETUP.md`](docs/EMAIL_SETUP.md) — real SMTP, Mailpit, Gmail, and transactional providers.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — component and sequence diagrams, TLS story.
 - [`docs/diagrams/`](docs/diagrams) — ERD, use case, sequence, class diagram, Gantt chart for the presentation.
 - [`mobile/README.md`](mobile/README.md) — mobile hand-off.

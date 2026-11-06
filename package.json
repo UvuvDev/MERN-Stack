@@ -18,7 +18,8 @@
     "import:real": "npm run import:real -w server --",
     "setup": "bash scripts/setup.sh",
     "import:races": "npm run import:races -w server",
-    "import:priority": "npm run import:priority -w server"
+    "import:priority": "npm run import:priority -w server",
+    "email:test": "node scripts/test-email.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
