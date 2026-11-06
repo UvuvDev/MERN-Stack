@@ -34,7 +34,14 @@ export default function App() {
         <AuthProvider>
           <Routes>
             <Route element={<Layout />}>
-              <Route index element={<Home />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="compare/:id"
                 element={

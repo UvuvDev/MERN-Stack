@@ -128,7 +128,7 @@ export default function Login() {
       <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <TextField
           id="login-email"
-          label="Email address"
+          label="Email address (login)"
           type="email"
           autoComplete="email"
           value={email}

@@ -166,7 +166,7 @@ export default function Register() {
       <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <TextField
           id="register-name"
-          label="Display name"
+          label="Full name"
           type="text"
           autoComplete="name"
           value={displayName}
@@ -180,7 +180,7 @@ export default function Register() {
         />
         <TextField
           id="register-email"
-          label="Email address"
+          label="Email address (your login)"
           type="email"
           autoComplete="email"
           value={email}

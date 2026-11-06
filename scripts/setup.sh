@@ -92,7 +92,7 @@ say() { printf '%s\n' "$*"; }
 die() { printf 'Error: %s\n' "$*" >&2; exit 1; }
 
 get_env() {
-  awk -v key="$2" 'BEGIN { FS = "=" } $1 == key { sub(/^[^=]*=/, ""); print; exit }' "$1"
+  awk -v key="$2" 'BEGIN { FS = "=" } $1 == key { sub(/^[^=]*=/, ""); value = $0 } END { print value }' "$1"
 }
 
 # Update KEY=value in an env file without clobbering comments or other keys.
@@ -101,15 +101,11 @@ set_env() {
     const fs = require("fs");
     const [file, key, value] = process.argv.slice(1);
     let text = fs.readFileSync(file, "utf8");
-    const pattern = new RegExp(
-      "^" + key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=.*$",
-      "m"
-    );
-    if (pattern.test(text)) {
-      text = text.replace(pattern, key + "=" + value);
-    } else {
-      text = text.trimEnd() + "\n" + key + "=" + value + "\n";
-    }
+    const prefix = key + "=";
+    const lines = text
+      .split(/\r?\n/)
+      .filter((line) => !line.startsWith(prefix));
+    text = lines.join("\n").trimEnd() + "\n" + prefix + value + "\n";
     fs.writeFileSync(file, text);
   ' "$1" "$2" "$3"
 }

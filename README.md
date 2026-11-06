@@ -30,6 +30,7 @@ Record Over Rhetoric is a MERN-stack web application that lets you pick two cand
 
 ## Features
 
+- The main builder is sign-in first; `/login` is the landing page, with registration and password recovery.
 - Browse 2026 races, offices, candidates, and full roll-call vote histories.
 - Race-first comparison builder: pick a race and the two nominees are preselected (manual office pairing still works).
 - Import real U.S. House and Senate records (Voteview positions + optional Congress.gov bill metadata).
