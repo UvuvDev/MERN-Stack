@@ -1,0 +1,105 @@
+# Local development stack: MongoDB 7 + Express API (development image).
+#
+#   docker compose up --build                  # mongo + api (client on host)
+#   docker compose --profile client up --build # mongo + api + vite in Docker
+#
+# The API is built from the `development` Dockerfile stage so the dev
+toolchain is available. server/src is bind-mounted for hot reload; the container's
+# node_modules stay untouched. The optional client shares the server's network
+# namespace so Vite's existing localhost:8080 proxy works unchanged.
+
+name: record-over-rhetoric
+
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    command: ["mongod", "--bind_ip_all"]
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--quiet",
+          "--eval",
+          "db.adminCommand({ ping: 1 }).ok",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    restart: unless-stopped
+    command: ["npm", "run", "dev", "-w", "server"]
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      NODE_ENV: development
+      PORT: "8080"
+      MONGODB_URI: mongodb://mongo:27017/record_over_rhetoric
+      JWT_SECRET: ${JWT_SECRET:-local-dev-only-change-me}
+      JWT_EXPIRES_IN: 7d
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:5173}
+      COOKIE_SECURE: "false"
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      OPENROUTER_BASE_URL: https://openrouter.ai/api/v1
+      AI_ENABLED: ${AI_ENABLED:-true}
+      AI_FAKE: ${AI_FAKE:-true}
+      AI_TIMEOUT_MS: "75000"
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      MAIL_FROM: ${MAIL_FROM:-Record Over Rhetoric <no-reply@recordoverrhetoric.app>}
+      SEED_DEMO_USER: ${SEED_DEMO_USER:-true}
+    ports:
+      - "8080:8080"
+      # Published for the optional client profile (shares this namespace).
+      - "5173:5173"
+    volumes:
+      - ./server/src:/app/server/src
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:8080/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  client:
+    profiles: ["client"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    restart: unless-stopped
+    command: ["npm", "run", "dev", "-w", "client", "--", "--host", "0.0.0.0"]
+    depends_on:
+      server:
+        condition: service_started
+    environment:
+      # The client shares the server's network namespace, so Vite's built-in
+      # proxy to http://localhost:8080 reaches the API container.
+      CHOKIDAR_USEPOLLING: "true"
+    network_mode: "service:server"
+    volumes:
+      - ./client/src:/app/client/src
+      - ./client/index.html:/app/client/index.html
+
+volumes:
+  mongo-data:

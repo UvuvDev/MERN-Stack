@@ -1,0 +1,125 @@
+This is your team's MERN Stack Project, Please note that all members must submit the PowerPoint presentation BEFORE their presentation. While there is a due date listed in Webcourses, your due date will be the same as your presentation date.
+
+You have 15 minutes. Make sure your team practices the presentation. <-- Make sure!
+
+Your team's list and presentation time can be found at the google sheet here:
+
+https://docs.google.com/spreadsheets/d/1jrs6ai3QpvChMNpvXw_X75MM-Wz_YAB6e4OaF-LJDiI/edit?usp=sharing
+
+You will need a project title and your GitHub link. The presentation time will be assigned by a week before before start
+
+The MERN Stack Project presentations will be 12 minutes. Attendance for all presentations is mandatory. Immediately in advance of your presentation you DO NOT have time to go the google drive, drop box, or the like and retrieve your material. You should have your slides and support material on a USB stick. All members must participate in the presentation and be present.
+
+You may not show the webapp from a local instance--it must be on a remote server.
+
+You are also required to use a remote hosting service, Digital Ocean. I will be demonstrating the MERN stack using Digital Ocean as well. You must access your app with a domain name rather than an IP address.
+
+The slides must be professional and start with a title page followed by a members page. Then you should explain what the project is, how it was developed, and anything that you feel is important. Gantt chart, UML SwaggerHub, email verification, and/or ER diagrams are required. Talk about what went well and what did not go well. Leave time for questions and have a questions page.
+
+Project Requirements:
+Remote database
+Use a MERN stack. (Outlawed: Vue or Angular, or Firebase)
+Use JSON to communicate between client and server. During the presentation, you must show access to at least one API endpoint using SwaggerHub.
+You will use a web page as the client. (A web page must be AJAX [asyn enabled] enabled that accesses the API.)
+A mobile application
+
+The program is a project of your choice. .
+
+The user interface should be clean and professional. The project should be as professional as possible. The source and support files must be in GitHub (You will add the link to the sign up sheet).
+
+Deliverables:
+Unzipped PowerPoint presentation -- (all members must submit before the presentation) First, make sure you put your GitHub link into the spreadsheet:
+
+https://docs.google.com/spreadsheets/d/1jrs6ai3QpvChMNpvXw_X75MM-Wz_YAB6e4OaF-LJDiI/edit?usp=sharing
+
+You will need a project title and your You will get a zero if you miss your team's presentation without prior approval of the instructor.
+
+Required presentation elements:
+
+    Title page
+    Team members and what part they played
+    Technology used (database, frameworks, GitHub, Discord, etc)
+        Spend some time here if you went above and beyond what was prescribed/required.  i.e., use of Docker, CloudFlare, etc.
+    Things that went well
+        What would you pass on to future POOSD students?
+    Things that did not go well
+        What warnings would you exhort to future POOSD students?
+    AI Disclosure
+        Spend some time here if you had a particularly notable experience with AI.  i.e. crazy hallucinations, particularly insightful responses, great learning experience, etc.
+
+Go through the following quickly:
+(I'll review these in detail later, you just need to show me that you've done them)
+
+    Gantt chart
+    ERD
+    Use Case
+    Class Diagram
+    Sequence or Activity DiagramAPI demonstration
+
+Leave Time For:
+
+    App demonstrations (Web and Mobile)
+    Time for Questions
+
+
+Rubric:
+
+5 points
+Presentation includes an explanation all technology used in the project, particularly any non-standard technology.
+
+5 points
+Presentation includes AI Use Disclosure
+
+
+5 points
+Presentation includes Activity or Sequence Diagram
+
+5 points
+Presentation includes Use Case Diagram
+
+5 points
+Presentation includes an ERD diagram
+	
+/5 pts
+Presentation includes Gantt chart
+
+10 points
+Presentation includes a discussion of the Good, Bad, and Ugly. Students will be expected to describe their experiences in terms of lessons learned, both in their struggles and their triumphs.
+
+5 points
+Application requires e-mail verification on new account creation
+
+5 points 
+Application provides a method for recovering lost or forgotten password
+
+5 points
+Demonstration of at least one API endpoint via Swagger Hub
+
+5 points
+Web app includes unit tests with at least one test per endpoint. Unit tests cover all end points with at least one test each.
+
+10 points 
+Web application is demonstrated showing all key features and functionality
+
+10 points
+Mobile application is demonstrated showing all key features and functionality. Mobile application can be demonstrated either via emulation or via live device using the classroom document camera.
+
+5 points
+Project passes Lighthouse tests for desktop with a score of at least 95% for performance and accessibility
+
+5 points
+Project passes Lighthouse tests with at least a 95% on mobile.
+
+3 points
+Extra Credit - Excellent Presentation Design. Slides are creative and well deisgned throughotu and appropriate to the theme of the application. it was evident that a great deal of effort wa put into creaing a standout presentation. 
+
+3 points
+Extra credit- excellent web app UX. The web app's UX demonstrates creativity, consistent branding, and overall appealing aesthetics. The UI is efficient and streamlined, avoiding unnecessary pop-ups, intermediate windows, and is otherwise focused on a frictionless user experience.
+
+3 points 
+Extra Credit - API to Database Encryption. Encryption is applied at all layers of the tech stack: TLS on the front-end as evidenced by the "https" schema present in the browser location window. TLS is also used to encrypt communication between the API/middle tier and the database. This must be demonstrated on a presentation slide with the relevant code from the API server.
+
+3 points 
+Extra Credit - Extra Integrations. Application makes use of non-trivial external integrations (i.e. cloud technologies [storage, serverless functions] , payment processors, authentication and authorization services, AI systems). Note use of simple query services like moviedb, weather.gov, etc., don't count. I'm looking for integrations that require significant setup or pre-processing of inputs.
+
+

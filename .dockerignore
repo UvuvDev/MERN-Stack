@@ -1,0 +1,48 @@
+# Dependencies are installed inside the image from the lockfile.
+node_modules
+**/node_modules
+
+# Build output is produced inside the image.
+dist
+**/dist
+build
+**/build
+coverage
+**/coverage
+
+# Version control and CI metadata
+.git
+.gitignore
+.github
+
+# Secrets and local environment
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+
+# Tests and local binaries
+**/tests
+**/__tests__
+**/*.test.js
+**/*.spec.js
+.mongodb-binaries
+**/.mongodb-binaries
+
+# Infrastructure / docs / mobile are not needed to build the runtime image
+infra
+docs
+mobile
+requirements.txt
+README.md
+
+# Housekeeping
+*.log
+.DS_Store
+.vscode
+.idea
+
+# Import caches
+**/.cache
+scripts

@@ -1,0 +1,28 @@
+{
+  "name": "record-over-rhetoric",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Compare political candidates by their actual voting records, not their rhetoric.",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "test": "npm test -w server",
+    "test:watch": "npm run test:watch -w server",
+    "seed": "npm run seed -w server --",
+    "lint": "npm run lint -w server && npm run lint -w client",
+    "import:real": "npm run import:real -w server --",
+    "setup": "bash scripts/setup.sh",
+    "import:races": "npm run import:races -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": "^22.12.0 || >=24.0.0"
+  }
+}

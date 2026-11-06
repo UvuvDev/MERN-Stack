@@ -1,0 +1,705 @@
+[
+  {
+    "slug": "alabama-us-senate-2026",
+    "name": "Alabama U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-al",
+    "state": "AL",
+    "bioguideIds": [
+      "M001212"
+    ],
+    "missingNominees": [
+      {
+        "name": "Everett Wess",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Alabama U.S. Senate race. No federal roll-call record in the imported dataset: Everett Wess.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Alabama"
+  },
+  {
+    "slug": "alaska-us-senate-2026",
+    "name": "Alaska U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ak",
+    "state": "AK",
+    "bioguideIds": [
+      "P000619",
+      "S001198"
+    ],
+    "missingNominees": [],
+    "description": "2026 Alaska U.S. Senate race.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Alaska"
+  },
+  {
+    "slug": "arkansas-us-senate-2026",
+    "name": "Arkansas U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ar",
+    "state": "AR",
+    "bioguideIds": [
+      "C001095"
+    ],
+    "missingNominees": [
+      {
+        "name": "Hallie Shoffner",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Arkansas U.S. Senate race. No federal roll-call record in the imported dataset: Hallie Shoffner.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Arkansas"
+  },
+  {
+    "slug": "colorado-us-senate-2026",
+    "name": "Colorado U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-co",
+    "state": "CO",
+    "bioguideIds": [
+      "H000273"
+    ],
+    "missingNominees": [
+      {
+        "name": "Mark Baisley",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Colorado U.S. Senate race. No federal roll-call record in the imported dataset: Mark Baisley.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Colorado"
+  },
+  {
+    "slug": "delaware-us-senate-2026",
+    "name": "Delaware U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-de",
+    "state": "DE",
+    "bioguideIds": [
+      "C001088"
+    ],
+    "missingNominees": [
+      {
+        "name": "Michael Katz",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Delaware U.S. Senate race. No federal roll-call record in the imported dataset: Michael Katz.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Delaware"
+  },
+  {
+    "slug": "florida-us-senate-2026",
+    "name": "Florida U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-fl",
+    "state": "FL",
+    "bioguideIds": [
+      "M001244"
+    ],
+    "missingNominees": [
+      {
+        "name": "Angie Nixon",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Florida U.S. Senate race. No federal roll-call record in the imported dataset: Angie Nixon.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_special_election_in_Florida"
+  },
+  {
+    "slug": "georgia-us-senate-2026",
+    "name": "Georgia U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ga",
+    "state": "GA",
+    "bioguideIds": [
+      "O000174",
+      "C001129"
+    ],
+    "missingNominees": [],
+    "description": "2026 Georgia U.S. Senate race.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Georgia"
+  },
+  {
+    "slug": "idaho-us-senate-2026",
+    "name": "Idaho U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-id",
+    "state": "ID",
+    "bioguideIds": [
+      "R000584"
+    ],
+    "missingNominees": [
+      {
+        "name": "Todd Achilles",
+        "party": "Independent",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Idaho U.S. Senate race. No federal roll-call record in the imported dataset: Todd Achilles.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Idaho"
+  },
+  {
+    "slug": "illinois-us-senate-2026",
+    "name": "Illinois U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-il",
+    "state": "IL",
+    "bioguideIds": [],
+    "missingNominees": [
+      {
+        "name": "Juliana Stratton",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      },
+      {
+        "name": "Don Tracy",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Illinois U.S. Senate race. No federal roll-call record in the imported dataset: Juliana Stratton; Don Tracy.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Illinois"
+  },
+  {
+    "slug": "iowa-us-senate-2026",
+    "name": "Iowa U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ia",
+    "state": "IA",
+    "bioguideIds": [
+      "H001091"
+    ],
+    "missingNominees": [
+      {
+        "name": "Josh Turek",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Iowa U.S. Senate race. No federal roll-call record in the imported dataset: Josh Turek.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Iowa"
+  },
+  {
+    "slug": "kansas-us-senate-2026",
+    "name": "Kansas U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ks",
+    "state": "KS",
+    "bioguideIds": [
+      "M001198"
+    ],
+    "missingNominees": [
+      {
+        "name": "Adam Hamilton",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Kansas U.S. Senate race. No federal roll-call record in the imported dataset: Adam Hamilton.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Kansas"
+  },
+  {
+    "slug": "kentucky-us-senate-2026",
+    "name": "Kentucky U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ky",
+    "state": "KY",
+    "bioguideIds": [
+      "B001282"
+    ],
+    "missingNominees": [
+      {
+        "name": "Charles Booker",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Kentucky U.S. Senate race. No federal roll-call record in the imported dataset: Charles Booker.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Kentucky"
+  },
+  {
+    "slug": "louisiana-us-senate-2026",
+    "name": "Louisiana U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-la",
+    "state": "LA",
+    "bioguideIds": [
+      "L000595"
+    ],
+    "missingNominees": [
+      {
+        "name": "Jamie Davis",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Louisiana U.S. Senate race. No federal roll-call record in the imported dataset: Jamie Davis.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Louisiana"
+  },
+  {
+    "slug": "maine-us-senate-2026",
+    "name": "Maine U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-me",
+    "state": "ME",
+    "bioguideIds": [
+      "C001035"
+    ],
+    "missingNominees": [
+      {
+        "name": "Troy Jackson",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Maine U.S. Senate race. No federal roll-call record in the imported dataset: Troy Jackson.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Maine"
+  },
+  {
+    "slug": "massachusetts-us-senate-2026",
+    "name": "Massachusetts U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ma",
+    "state": "MA",
+    "bioguideIds": [
+      "M000133"
+    ],
+    "missingNominees": [
+      {
+        "name": "John Deaton",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Massachusetts U.S. Senate race. No federal roll-call record in the imported dataset: John Deaton.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Massachusetts"
+  },
+  {
+    "slug": "michigan-us-senate-2026",
+    "name": "Michigan U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-mi",
+    "state": "MI",
+    "bioguideIds": [],
+    "missingNominees": [
+      {
+        "name": "Abdul El-Sayed",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      },
+      {
+        "name": "Mike Rogers",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Michigan U.S. Senate race. No federal roll-call record in the imported dataset: Abdul El-Sayed; Mike Rogers.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Michigan"
+  },
+  {
+    "slug": "minnesota-us-senate-2026",
+    "name": "Minnesota U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-mn",
+    "state": "MN",
+    "bioguideIds": [],
+    "missingNominees": [
+      {
+        "name": "Peggy Flanagan",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      },
+      {
+        "name": "Michele Tafoya",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Minnesota U.S. Senate race. No federal roll-call record in the imported dataset: Peggy Flanagan; Michele Tafoya.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Minnesota"
+  },
+  {
+    "slug": "mississippi-us-senate-2026",
+    "name": "Mississippi U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ms",
+    "state": "MS",
+    "bioguideIds": [
+      "H001079"
+    ],
+    "missingNominees": [
+      {
+        "name": "Scott Colom",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Mississippi U.S. Senate race. No federal roll-call record in the imported dataset: Scott Colom.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Mississippi"
+  },
+  {
+    "slug": "montana-us-senate-2026",
+    "name": "Montana U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-mt",
+    "state": "MT",
+    "bioguideIds": [],
+    "missingNominees": [
+      {
+        "name": "Kurt Alme",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      },
+      {
+        "name": "Seth Bodnar",
+        "party": "Independent",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Montana U.S. Senate race. No federal roll-call record in the imported dataset: Kurt Alme; Seth Bodnar.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Montana"
+  },
+  {
+    "slug": "nebraska-us-senate-2026",
+    "name": "Nebraska U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ne",
+    "state": "NE",
+    "bioguideIds": [
+      "R000618"
+    ],
+    "missingNominees": [
+      {
+        "name": "Dan Osborn",
+        "party": "Independent",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Nebraska U.S. Senate race. No federal roll-call record in the imported dataset: Dan Osborn.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Nebraska"
+  },
+  {
+    "slug": "new-hampshire-us-senate-2026",
+    "name": "New Hampshire U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-nh",
+    "state": "NH",
+    "bioguideIds": [
+      "P000614"
+    ],
+    "missingNominees": [
+      {
+        "name": "John E. Sununu",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 New Hampshire U.S. Senate race. No federal roll-call record in the imported dataset: John E. Sununu.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_New_Hampshire"
+  },
+  {
+    "slug": "new-jersey-us-senate-2026",
+    "name": "New Jersey U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-nj",
+    "state": "NJ",
+    "bioguideIds": [
+      "B001288"
+    ],
+    "missingNominees": [
+      {
+        "name": "Justin Murphy",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 New Jersey U.S. Senate race. No federal roll-call record in the imported dataset: Justin Murphy.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_New_Jersey"
+  },
+  {
+    "slug": "new-mexico-us-senate-2026",
+    "name": "New Mexico U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-nm",
+    "state": "NM",
+    "bioguideIds": [
+      "L000570"
+    ],
+    "missingNominees": [
+      {
+        "name": "Larry Marker",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 New Mexico U.S. Senate race. No federal roll-call record in the imported dataset: Larry Marker.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_New_Mexico"
+  },
+  {
+    "slug": "north-carolina-us-senate-2026",
+    "name": "North Carolina U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-nc",
+    "state": "NC",
+    "bioguideIds": [],
+    "missingNominees": [
+      {
+        "name": "Roy Cooper",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      },
+      {
+        "name": "Michael Whatley",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 North Carolina U.S. Senate race. No federal roll-call record in the imported dataset: Roy Cooper; Michael Whatley.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_North_Carolina"
+  },
+  {
+    "slug": "ohio-us-senate-2026",
+    "name": "Ohio U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-oh",
+    "state": "OH",
+    "bioguideIds": [
+      "B000944",
+      "H001104"
+    ],
+    "missingNominees": [],
+    "description": "2026 Ohio U.S. Senate race.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_special_election_in_Ohio"
+  },
+  {
+    "slug": "oklahoma-us-senate-2026",
+    "name": "Oklahoma U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ok",
+    "state": "OK",
+    "bioguideIds": [
+      "H001082"
+    ],
+    "missingNominees": [
+      {
+        "name": "NKiyla \\\"Jasmine\\\" Thomas",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Oklahoma U.S. Senate race. No federal roll-call record in the imported dataset: NKiyla \\\"Jasmine\\\" Thomas.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Oklahoma"
+  },
+  {
+    "slug": "oregon-us-senate-2026",
+    "name": "Oregon U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-or",
+    "state": "OR",
+    "bioguideIds": [
+      "M001176"
+    ],
+    "missingNominees": [
+      {
+        "name": "David Brock Smith",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Oregon U.S. Senate race. No federal roll-call record in the imported dataset: David Brock Smith.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Oregon"
+  },
+  {
+    "slug": "rhode-island-us-senate-2026",
+    "name": "Rhode Island U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-ri",
+    "state": "RI",
+    "bioguideIds": [
+      "R000122"
+    ],
+    "missingNominees": [
+      {
+        "name": "Raymond McKay",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Rhode Island U.S. Senate race. No federal roll-call record in the imported dataset: Raymond McKay.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Rhode_Island"
+  },
+  {
+    "slug": "south-carolina-us-senate-2026",
+    "name": "South Carolina U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-sc",
+    "state": "SC",
+    "bioguideIds": [
+      "G000608"
+    ],
+    "missingNominees": [
+      {
+        "name": "Annie Andrews",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 South Carolina U.S. Senate race. No federal roll-call record in the imported dataset: Annie Andrews.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_South_Carolina"
+  },
+  {
+    "slug": "south-dakota-us-senate-2026",
+    "name": "South Dakota U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-sd",
+    "state": "SD",
+    "bioguideIds": [
+      "R000605"
+    ],
+    "missingNominees": [
+      {
+        "name": "Brian Bengs",
+        "party": "Independent",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 South Dakota U.S. Senate race. No federal roll-call record in the imported dataset: Brian Bengs.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_South_Dakota"
+  },
+  {
+    "slug": "tennessee-us-senate-2026",
+    "name": "Tennessee U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-tn",
+    "state": "TN",
+    "bioguideIds": [
+      "H000601"
+    ],
+    "missingNominees": [
+      {
+        "name": "Marquita Bradshaw",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Tennessee U.S. Senate race. No federal roll-call record in the imported dataset: Marquita Bradshaw.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Tennessee"
+  },
+  {
+    "slug": "texas-us-senate-2026",
+    "name": "Texas U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-tx",
+    "state": "TX",
+    "bioguideIds": [],
+    "missingNominees": [
+      {
+        "name": "James Talarico",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      },
+      {
+        "name": "Ken Paxton",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Texas U.S. Senate race. No federal roll-call record in the imported dataset: James Talarico; Ken Paxton.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Texas"
+  },
+  {
+    "slug": "virginia-us-senate-2026",
+    "name": "Virginia U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-va",
+    "state": "VA",
+    "bioguideIds": [
+      "W000805"
+    ],
+    "missingNominees": [
+      {
+        "name": "Bert Mizusawa",
+        "party": "Republican",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Virginia U.S. Senate race. No federal roll-call record in the imported dataset: Bert Mizusawa.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Virginia"
+  },
+  {
+    "slug": "west-virginia-us-senate-2026",
+    "name": "West Virginia U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-wv",
+    "state": "WV",
+    "bioguideIds": [
+      "C001047"
+    ],
+    "missingNominees": [
+      {
+        "name": "Rachel Fetty Anderson",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 West Virginia U.S. Senate race. No federal roll-call record in the imported dataset: Rachel Fetty Anderson.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_West_Virginia"
+  },
+  {
+    "slug": "wyoming-us-senate-2026",
+    "name": "Wyoming U.S. Senate 2026",
+    "electionYear": 2026,
+    "electionDate": "2026-11-03",
+    "officeSlug": "real-us-senate-wy",
+    "state": "WY",
+    "bioguideIds": [
+      "H001096"
+    ],
+    "missingNominees": [
+      {
+        "name": "James W. Byrd",
+        "party": "Democratic",
+        "reason": "No federal roll-call record in the imported dataset."
+      }
+    ],
+    "description": "2026 Wyoming U.S. Senate race. No federal roll-call record in the imported dataset: James W. Byrd.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Wyoming"
+  }
+]

@@ -1,0 +1,105 @@
+# Cloud Build: build the production image, push to Artifact Registry, deploy to
+# Cloud Run with Secret Manager-backed environment variables.
+#
+# Required APIs: Cloud Build, Artifact Registry, Cloud Run, Secret Manager.
+# Required IAM: the Cloud Build service account needs Artifact Registry Writer
+# and Cloud Run Admin (or roles/run.developer + actAs on the runtime SA).
+#
+# Substitutions:
+#   _REGION         GCP region (default us-central1)
+#   _REPO           Artifact Registry repository id
+#   _SERVICE        Cloud Run service name
+#   _CLIENT_ORIGIN  Public HTTPS origin of the deployed SPA
+#   _RUNTIME_SA     Runtime service account e-mail; defaults to the account
+#                   created by infra/terraform (record-over-rhetoric@PROJECT)
+#   _MIN_INSTANCES  Cloud Run minimum instances (default 0)
+#   _MAX_INSTANCES  Cloud Run maximum instances (default 3)
+#   _TAG            Optional image tag override for manual builds (commit SHA)
+
+substitutions:
+  _REGION: us-central1
+  _REPO: record-over-rhetoric
+  _SERVICE: record-over-rhetoric
+  _CLIENT_ORIGIN: https://recordoverrhetoric.app
+  _RUNTIME_SA: ""
+  _MIN_INSTANCES: "0"
+  _MAX_INSTANCES: "3"
+  _TAG: ""
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: E2_HIGHCPU_8
+
+timeout: 1800s
+
+steps:
+  # 1. Build the multi-stage production image, tagged with the commit SHA and
+  #    latest so rollbacks can pin an exact revision. Trigger builds get
+  #    SHORT_SHA from Cloud Build; manual builds can pass _TAG.
+  - id: build-image
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -eo pipefail
+        TAG="${_TAG}"
+        if [ -z "$$TAG" ]; then TAG="$SHORT_SHA"; fi
+        if [ -z "$$TAG" ]; then TAG="manual-$$(date +%Y%m%d%H%M%S)"; fi
+        echo "Building ${_SERVICE} with tag $$TAG"
+        docker build --pull \
+          --tag="${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$$TAG" \
+          --tag="${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest" \
+          .
+        echo "$$TAG" > /workspace/tag.txt
+
+  # 2. Push both tags to Artifact Registry.
+  - id: push-image
+    name: gcr.io/cloud-builders/docker
+    waitFor: ["build-image"]
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -eo pipefail
+        TAG="$$(cat /workspace/tag.txt)"
+        docker push "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$$TAG"
+        docker push "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest"
+
+  # 3. Deploy to Cloud Run. Secrets are mounted as env vars by reference; the
+  #    runtime service account must hold roles/secretmanager.secretAccessor on
+  #    each secret (Terraform grants this).
+  - id: deploy-cloud-run
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    waitFor: ["push-image"]
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -eo pipefail
+        TAG="$$(cat /workspace/tag.txt)"
+        SERVICE_ACCOUNT="record-over-rhetoric@$PROJECT_ID.iam.gserviceaccount.com"
+        if [ -n "${_RUNTIME_SA}" ]; then
+          SERVICE_ACCOUNT="${_RUNTIME_SA}"
+        fi
+
+        gcloud run deploy "${_SERVICE}" \
+          --image="${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$$TAG" \
+          --region="${_REGION}" \
+          --platform=managed \
+          --service-account="$$SERVICE_ACCOUNT" \
+          --allow-unauthenticated \
+          --port=8080 \
+          --cpu=1 \
+          --memory=512Mi \
+          --concurrency=80 \
+          --timeout=300 \
+          --min-instances="${_MIN_INSTANCES}" \
+          --max-instances="${_MAX_INSTANCES}" \
+          --set-env-vars="NODE_ENV=production,COOKIE_SECURE=true,CLIENT_ORIGIN=${_CLIENT_ORIGIN},AI_ENABLED=true,SEED_DEMO_USER=false" \
+          --set-secrets="MONGODB_URI=mongodb-uri:latest,JWT_SECRET=jwt-secret:latest,OPENROUTER_API_KEY=openrouter-api-key:latest,SMTP_HOST=smtp-host:latest,SMTP_PORT=smtp-port:latest,SMTP_USER=smtp-user:latest,SMTP_PASS=smtp-pass:latest,MAIL_FROM=mail-from:latest"
+
+# The version-tagged image is pushed by the push step above; the static image
+# list only tracks :latest because Cloud Build requires literal tags here.
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest
