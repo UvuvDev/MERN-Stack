@@ -58,10 +58,12 @@ export RUNTIME_SA="record-over-rhetoric@${PROJECT_ID}.iam.gserviceaccount.com"
    - Stricter option: attach a **Serverless VPC connector** to Cloud Run and use
      Atlas private endpoints (Private Service Connect or VPC peering). Then
      allow only the connector/private range.
-4. **Connect → Drivers** and copy the SRV connection string:
+4. **Connect → Drivers** and copy the SRV connection string. Keep it in a
+   password manager; do not commit it or paste it into a tracked file. Put it in
+   a shell variable for the commands below:
 
-   ```
-   mongodb+srv://ror_app:<password>@cluster0.xxxxx.mongodb.net/record_over_rhetoric?retryWrites=true&w=majority&appName=record-over-rhetoric
+   ```bash
+   export ATLAS_URI="paste-the-atlas-srv-uri-here"
    ```
 
    URL-encode special characters in the password (`@` → `%40`, `:` → `%3A`,
@@ -78,7 +80,7 @@ export RUNTIME_SA="record-over-rhetoric@${PROJECT_ID}.iam.gserviceaccount.com"
 - Verify connectivity from your workstation:
 
   ```bash
-  mongosh "mongodb+srv://ror_app:PASSWORD@cluster0.xxxxx.mongodb.net/record_over_rhetoric"
+  mongosh "$ATLAS_URI"
   ```
 
   A successful `db.runCommand({ ping: 1 })` confirms TLS and credentials.
@@ -170,7 +172,7 @@ create_secret() {
   printf '%s' "$value" | gcloud secrets versions add "$name" --data-file=-
 }
 
-create_secret mongodb-uri        "mongodb+srv://ror_app:...@cluster0.xxxxx.mongodb.net/record_over_rhetoric?retryWrites=true&w=majority"
+create_secret mongodb-uri        "$ATLAS_URI"
 create_secret jwt-secret         "$(openssl rand -base64 48)"
 create_secret openrouter-api-key "sk-or-v1-..."
 create_secret smtp-host          "smtp.example.com"
@@ -427,7 +429,7 @@ Seed from your workstation against Atlas (temporarily allow your IP in Atlas
 Network Access), or from a one-off Cloud Run Job using the deployed image:
 
 ```bash
-export MONGODB_URI="mongodb+srv://ror_app:...@cluster0.xxxxx.mongodb.net/record_over_rhetoric"
+export MONGODB_URI="$ATLAS_URI"
 npm run seed -w server -- --reset
 ```
 

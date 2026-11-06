@@ -93,9 +93,9 @@ Useful flags:
 ./scripts/setup.sh --real-only --state=FL   # real records only
 CONGRESS_API_KEY=... ./scripts/setup.sh --real --state=FL --enrich   # + official bill metadata
 ./scripts/setup.sh --reset             # wipe before seeding
-./scripts/setup.sh --atlas="mongodb+srv://..."   # use Atlas instead of Docker
+./scripts/setup.sh --atlas="$ATLAS_URI"   # use Atlas instead of Docker
 ./scripts/setup.sh --start             # set up, then run npm run dev
-MONGODB_URI="mongodb+srv://..." OPENROUTER_API_KEY="sk-or-..." ./scripts/setup.sh
+MONGODB_URI="$ATLAS_URI" OPENROUTER_API_KEY="sk-or-..." ./scripts/setup.sh
 ```
 
 Run `./scripts/setup.sh --help` for all options. It is safe to re-run.
