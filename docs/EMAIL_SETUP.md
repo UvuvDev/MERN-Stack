@@ -67,6 +67,26 @@ CLIENT_ORIGIN=http://localhost:5173
 
 Gmail rewrites the From address to the authenticated account, so keep `MAIL_FROM` on that Gmail address. Free Gmail sends roughly 500 messages/day and is not suitable for a production app.
 
+### Gmail in production and compromise recovery
+
+Yes, Gmail SMTP can be used in deployment. For a public app it is the weakest option because an App Password is a **mailbox credential**, not a send-only API key:
+
+- It can send mail as the account and, if IMAP is enabled, read mailbox contents.
+- It cannot normally change the Google password, 2FA, or account recovery settings.
+- It is **revocable**, but not retroactive: you can stop future access, not unsend messages or unread data.
+
+Use a **dedicated Google account** with no personal mail, 2FA enabled, and a dedicated App Password if you use Gmail for a class deployment. Never use your personal account.
+
+If the password is stolen or the server is compromised:
+
+1. Google Account → Security → App passwords → revoke that App Password.
+2. Change the Google account password and sign out of all sessions.
+3. Review Security Activity, sent mail, filters, forwarding, delegation, and IMAP/POP settings.
+4. If the website host was compromised, treat **all** environment secrets as exposed: rotate the JWT secret, MongoDB password, OpenRouter key, Congress key, and any other SMTP/provider keys.
+5. Check provider logs for abuse and add rate limits/monitoring.
+
+A transactional provider (Resend/Mailgun/SendGrid/SES) is safer for production: use a sending-only API key scoped to a verified domain, rotate it independently, and keep it in Secret Manager. A stolen provider key can still send spam from your domain until revoked, but it does not expose a personal mailbox.
+
 ---
 
 ## Production: transactional provider

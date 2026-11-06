@@ -475,6 +475,29 @@ Notes:
 
 ---
 
+## 10A. Using an existing LAMP server or domain
+
+If another project already owns a server/domain (for example
+`poosd.shuoko-exe.dev`), do not point this app at its root domain or modify that
+project's Terraform state. Terraform state files can contain plaintext secrets
+and belong to the other deployment.
+
+Use a **separate subdomain** (for example `record.poosd.shuoko-exe.dev`) and one
+of these options:
+
+- **Cloud Run + domain mapping (recommended):** point the subdomain at Cloud Run
+  with a managed certificate; the LAMP server stays untouched.
+- **Separate service on the LAMP host:** run this app as its own Docker or
+  systemd service on a distinct port, behind a new nginx/Caddy vhost for the
+  subdomain, with its own TLS certificate and MongoDB Atlas connection. Do not
+  edit the existing LAMP project's vhost or Terraform state.
+- Keep `CLIENT_ORIGIN=https://<subdomain>` and `COOKIE_SECURE=true` so
+  verification links and session cookies use HTTPS.
+
+Never commit `terraform.tfstate` (the repository ignores `*.tfstate`). Prefer a
+remote, encrypted backend with restricted access. If a state file containing
+secret values is exposed, rotate those secrets.
+
 ## 11. Lighthouse audit procedure
 
 1. Deploy to the custom HTTPS domain and warm the service (`curl` the home page)
