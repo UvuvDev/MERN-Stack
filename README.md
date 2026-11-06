@@ -8,6 +8,13 @@ Record Over Rhetoric is a MERN-stack web application that lets you pick two cand
 
 ---
 
+## Live deployment
+
+- **URL:** https://poosd.shuroko-exe.dev
+- **Host:** GCP Compute Engine VM, Docker containers for the API and MongoDB, Apache TLS reverse proxy, Let's Encrypt certificate, Mailgun SMTP.
+
+The previous LAMP app and its PHP/MariaDB services on that VM are stopped; do not re-run the other project's Ansible/Terraform workflow against this VM while the MERN app is live.
+
 ## Table of contents
 
 - [Features](#features)
